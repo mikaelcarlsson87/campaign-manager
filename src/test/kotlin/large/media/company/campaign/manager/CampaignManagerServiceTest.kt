@@ -14,39 +14,38 @@ internal class CampaignManagerServiceTest(
 
     @Test
     fun `scenario 1`() {
-
+        println("Scenario 1")
         val path = getFilePath("sample_input_1.txt")
         val mostBeneficialCampaigns = withTimeStats {
             campaignManagerService.calculateMostBeneficialCampaigns(path)
         }
 
-        assertEquals(mostBeneficialCampaigns.totalImpressions, 32000000)
-        assertEquals(mostBeneficialCampaigns.totalRevenue, 3620)
-
+        assertEquals(32000000, mostBeneficialCampaigns.totalImpressions)
+        assertEquals(3620, mostBeneficialCampaigns.totalRevenue)
     }
 
-    //@Test //Needs increased stack-size. -Xss1G for instance
+    //@Test //Needs increased stack-size.
     fun `scenario 2`() {
-
+        println("Scenario 2")
         val path = getFilePath("sample_input_2.txt")
         val mostBeneficialCampaigns = withTimeStats {
             campaignManagerService.calculateMostBeneficialCampaigns(path)
         }
 
-        assertEquals(mostBeneficialCampaigns.totalImpressions, 50000000)
-        assertEquals(mostBeneficialCampaigns.totalRevenue, 51014000)
+        assertEquals(50000000, mostBeneficialCampaigns.totalImpressions)
+        assertEquals(51014000, mostBeneficialCampaigns.totalRevenue)
     }
 
     @Test
     fun `scenario 3`() {
-
+        println("Scenario 3")
         val path = getFilePath("sample_input_3.txt")
         val mostBeneficialCampaigns = withTimeStats {
             campaignManagerService.calculateMostBeneficialCampaigns(path)
         }
 
-        assertEquals(mostBeneficialCampaigns.totalImpressions, 2000000000)
-        assertEquals(mostBeneficialCampaigns.totalRevenue, 13330000)
+        assertEquals(2000000000, mostBeneficialCampaigns.totalImpressions)
+        assertEquals(13330000, mostBeneficialCampaigns.totalRevenue)
     }
 
     /* Helpers */
@@ -56,9 +55,9 @@ internal class CampaignManagerServiceTest(
     private fun <T> withTimeStats(function: () -> T): T {
         println("Starting")
         val start = System.currentTimeMillis()
-        val triple = function.invoke()
+        val result = function.invoke()
         val totalms = System.currentTimeMillis() - start
         println("Finished in ${totalms}ms")
-        return triple
+        return result
     }
 }

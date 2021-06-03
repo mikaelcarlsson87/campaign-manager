@@ -12,8 +12,9 @@ class CampaignManagerApplication(
 ): ApplicationRunner {
 
 	override fun run(args: ApplicationArguments?) {
-		if(args?.nonOptionArgs?.size!! > 0)
-			campaignManagerService.calculateMostBeneficialCampaigns(args.nonOptionArgs.get(0))
+		if(args?.nonOptionArgs?.size!! > 0) {
+			campaignManagerService.calculateMostBeneficialCampaigns(args.nonOptionArgs[0])
+		}
 		else
 			println("No args given.")
 	}

@@ -39,6 +39,7 @@ class CampaignsCalculator {
 
         if (wouldExceedThreshold(totalImpressions, currentCustomer.impressions)) {
             replaceHighestTripleIfNeeded(Triple(customerCounters.toMutableList(), totalImpressions, totalRevenue))
+            //Reset current customerCounter
             customerCounters[customerNr] = 0
             return
         }
